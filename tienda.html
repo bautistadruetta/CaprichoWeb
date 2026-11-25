@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<title>Perfumes de diseñador | Capricho Perfumería</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Catálogo de perfumes de diseñador de Capricho Perfumería: Dior Sauvage, Bleu de Chanel, Y Eau de Parfum y Acqua di Giò.">
+<meta name="keywords" content="Capricho, perfumería, perfumes de diseñador, Dior, Chanel, Yves Saint Laurent, Armani">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Perfumes de diseñador | Capricho Perfumería">
+<meta property="og:description" content="Descubrí perfumes de diseñador seleccionados para Capricho.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/logo.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="styles.css">
+<!-- Cargo mi archivo JavaScript y espero a que se lea el HTML antes de ejecutarlo. -->
+<script src="pag.js" defer></script>
+<link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon">
+</head>
+<body>
+
+<header>
+  <nav class="navbar navbar-expand-lg cap-navbar" aria-label="Navegación principal">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <img src="assets/logo.png" alt="Logo principal de Capricho Perfumería" class="brand-logo">
+        <span>CAPRICHO</span>
+      </a>
+      <button class="navbar-toggler custom-toggler" type="button" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="menu-principal">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse" id="menu-principal">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="tienda.html">Tienda</a></li>
+          <li class="nav-item"><a class="nav-link" href="servicios.html">Servicios</a></li>
+          <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+          <li class="nav-item"><a class="nav-link nav-contacto" href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+<section class="page-header">
+  <div class="container">
+    <p class="eyebrow">CATÁLOGO</p>
+    <h1>Perfumes de diseñador</h1>
+    <p>Una selección de fragancias reconocidas para conocer distintos estilos y perfiles.</p>
+  </div>
+</section>
+
+<section class="section-space" aria-labelledby="catalogo-title">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">FRAGANCIAS SELECCIONADAS</p>
+      <h2 id="catalogo-title">Encontrá tu próximo perfume</h2>
+      <p class="narrow-copy">En Capricho queremos que puedas comparar diferentes fragancias y descubrir cuál se adapta mejor a tus gustos y ocasiones.</p>
+    </div>
+
+    <!-- Uso este buscador para filtrar las fragancias mientras el visitante escribe. -->
+    <div class="row g-3 align-items-center mb-4">
+      <div class="col-md-7">
+        <label for="buscador-perfumes" class="form-label">Buscar perfume</label>
+        <input class="form-control" id="buscador-perfumes" type="search" placeholder="Ej.: Dior, Chanel, fresco...">
+      </div>
+      <div class="col-md-5">
+        <label for="filtro-categoria" class="form-label">Filtrar por estilo</label>
+        <select class="form-select" id="filtro-categoria">
+          <option value="todos">Todos los perfumes</option>
+          <option value="fresco">Frescos</option>
+          <option value="amaderado">Amaderados</option>
+          <option value="intenso">Intensos</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Coloco dentro de este contenedor las tarjetas del catálogo con JavaScript. -->
+    <div class="product-grid designer-grid" id="contenedor-perfumes"></div>
+    <p id="sin-resultados" class="catalog-note mt-3" hidden>No se encontraron perfumes con esa búsqueda.</p>
+    <p id="mensaje-catalogo" class="small mt-3" role="status" aria-live="polite"></p>
+
+    <!-- Uso este formulario para practicar cómo agrego perfumes al array desde JavaScript. -->
+    <section class="add-product-panel mt-5" aria-labelledby="titulo-agregar-perfume">
+      <h2 class="h4" id="titulo-agregar-perfume">Agregar un perfume al catálogo</h2>
+      <p class="small text-muted">Esta función agrega el perfume mientras la página está abierta. No modifica una base de datos.</p>
+      <form id="formulario-perfume" class="row g-3">
+        <div class="col-md-5">
+          <label for="nombre-perfume" class="form-label">Nombre y marca *</label>
+          <input class="form-control" id="nombre-perfume" type="text" placeholder="Ej.: Acqua di Giò Profondo" required>
+        </div>
+        <div class="col-md-3">
+          <label for="categoria-perfume" class="form-label">Estilo</label>
+          <select class="form-select" id="categoria-perfume">
+            <option value="fresco">Fresco</option>
+            <option value="amaderado">Amaderado</option>
+            <option value="intenso">Intenso</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="descripcion-perfume" class="form-label">Descripción</label>
+          <input class="form-control" id="descripcion-perfume" type="text" placeholder="Breve descripción">
+        </div>
+        <div class="col-12">
+          <button class="btn btn-dark" type="submit">Agregar perfume</button>
+          <p id="estado-formulario-perfume" class="small mt-2 mb-0" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </section>
+
+    <aside class="catalog-note mt-5">
+      <h2 class="h5">¿No sabés cuál elegir?</h2>
+      <p class="mb-0">Contactanos y contanos qué tipo de perfume buscás, para qué ocasión y qué estilos te gustan.</p>
+    </aside>
+
+    <div class="image-credits mt-4">
+      <p class="small mb-1"><strong>Fuentes de imágenes:</strong></p>
+      <p class="small mb-0">
+        Dior Sauvage y Y Eau de Parfum: Wikimedia Commons (CC BY-SA 4.0).
+        Acqua di Giò: Wikimedia Commons (CC BY-SA 3.0).
+        Bleu de Chanel: Unsplash.
+      </p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="container py-5">
+    <div class="row g-4">
+      <div class="col-md-5">
+        <h2 class="h5">CAPRICHO</h2>
+        <p>Perfumería orientada a quienes quieren conocer, elegir y disfrutar mejor cada fragancia.</p>
+      </div>
+      <div class="col-md-3">
+        <h2 class="h6">Navegación</h2>
+        <ul class="list-unstyled footer-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="tienda.html">Tienda</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h2 class="h6">Contacto</h2>
+        <p>¿No sabés qué perfume elegir? Escribinos para recibir orientación.</p>
+        <a href="contacto.html" class="btn btn-outline-light btn-sm">Contactanos</a>
+      </div>
+    </div>
+    <hr class="border-secondary my-4">
+    <p class="small mb-0">© <span id="current-year">2026</span> Capricho Perfumería · Proyecto educativo.</p>
+  </div>
+</footer>
+
+</body>
+</html>
